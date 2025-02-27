@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/project-shop/static/css/main.5da70312.css",
-    "main.js": "/project-shop/static/js/main.edb569f0.js",
-    "static/js/156.9ecf4206.chunk.js": "/project-shop/static/js/156.9ecf4206.chunk.js",
-    "static/media/Shop-pic.jpeg": "/project-shop/static/media/Shop-pic.910a125a6bc453e34397.jpeg",
-    "index.html": "/project-shop/index.html",
-    "main.5da70312.css.map": "/project-shop/static/css/main.5da70312.css.map",
-    "main.edb569f0.js.map": "/project-shop/static/js/main.edb569f0.js.map",
-    "156.9ecf4206.chunk.js.map": "/project-shop/static/js/156.9ecf4206.chunk.js.map"
+    "main.css": "/Project-shop/static/css/main.d5f53ab4.css",
+    "main.js": "/Project-shop/static/js/main.604690ab.js",
+    "static/js/156.9ecf4206.chunk.js": "/Project-shop/static/js/156.9ecf4206.chunk.js",
+    "static/media/Shop-pic.jpeg": "/Project-shop/static/media/Shop-pic.910a125a6bc453e34397.jpeg",
+    "index.html": "/Project-shop/index.html",
+    "main.d5f53ab4.css.map": "/Project-shop/static/css/main.d5f53ab4.css.map",
+    "main.604690ab.js.map": "/Project-shop/static/js/main.604690ab.js.map",
+    "156.9ecf4206.chunk.js.map": "/Project-shop/static/js/156.9ecf4206.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5da70312.css",
-    "static/js/main.edb569f0.js"
+    "static/css/main.d5f53ab4.css",
+    "static/js/main.604690ab.js"
   ]
 }
