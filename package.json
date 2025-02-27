@@ -2,7 +2,7 @@
   "name": "project-shop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://noor-ul-hasanat.github.io/Project-shop/",
+  "homepage": "https://noor-ul-hasanat.github.io/project-shop/",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
