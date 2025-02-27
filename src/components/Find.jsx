@@ -4,11 +4,12 @@ import { MyActions } from '../store/Mystore';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
 export default function AvlbleProdts() {
+  console.log('i ma find ')
   const products = useSelector((state) => state.Available.products);
   const filteredProducts = useSelector((state) => state.Available.filteredProducts);
   const dispatch = useDispatch();
-  const [editingIndex, setEditingIndex] = useState(null);
-  const [formValues, setFormValues] = useState({
+
+  const [formValues, setFormValues] = useState({          // for Storing form value when edit is clicked
     Name: '',
     Quantity: '',
     Type: '',
@@ -17,12 +18,11 @@ export default function AvlbleProdts() {
     Location: '',
     Image: '',
   });
-  const [searchQuery, setSearchQuery] = useState('');
-
+    const [editingIndex, setEditingIndex] = useState(null);  // for storing the specific index on which edit is clicked
   const handleEditClick = (index) => {
-    setEditingIndex(index);
-    const product = products[index];
-    setFormValues({
+    setEditingIndex(index);                   // this step setIndex state that exactly on which edit cardthe user clicked
+    const product = products[index];          // this retrive means (nakalna) a new product from products array to update that
+    setFormValues({                           // this step setFormvalues state to the enterend vales in the input
       Name: product.Name || '',
       Quantity: product.Quantity || '',
       Type: product.Type || '',
@@ -32,18 +32,13 @@ export default function AvlbleProdts() {
       Image: product.Image || '',
     });
   };
-
-  const handleUpdate = (event) => {
+  const handleUpdate = (event) => {               // triger when update or save is clicked 
     event.preventDefault();
-    dispatch(MyActions.UpdateDetails({ index: editingIndex, updatedProduct: formValues }));
-    setEditingIndex(null);
+    dispatch(MyActions.UpdateDetails({ index: editingIndex, updatedProduct: formValues }));  // dispated the update slice action from Redux store
+    setEditingIndex(null);                        // Adain update the state that every thing is finished 
   };
 
-  const handleRemove = (index) => {
-    dispatch(MyActions.RemoveProduct(index));
-  };
-
-  const handleChange = (e) => {
+  const handleChange = (e) => {                   // Catches the every input when changes occur there now a days we use ref for this
     const { name, value } = e.target;
     setFormValues((prev) => ({ ...prev, [name]: value }));
   };
@@ -52,6 +47,11 @@ export default function AvlbleProdts() {
     setEditingIndex(null);
   };
 
+  const handleRemove = (index) => {
+    dispatch(MyActions.RemoveProduct(index));
+  };
+
+  const [searchQuery, setSearchQuery] = useState('');
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
@@ -60,7 +60,7 @@ export default function AvlbleProdts() {
   };
 
   return (
-    <div className="w-full pt-5 bg-gray-100 min-h-screen">
+    <div className="w-full pt-5 bg-gray-600 min-h-screen">
       {/* Search Input */}
       <div className="max-w-lg mx-auto py-5">
         <input
@@ -89,14 +89,20 @@ export default function AvlbleProdts() {
               </div>
               <div className="ml-4 flex-1">
                 <p className="text-white">Name: {product.Name}</p>
+                
                 <p className="text-white">Quantity: {product.Quantity}</p>
-                <p className="text-white">Company: {product.Company}</p>
-               
+                <p className="text-white">Cost Price: {product.Price}/.</p>
+                <p className="text-white">Location: {product.Location}</p>
               </div>
               <div className='flex-1'>
-              <p className="text-white">Rs: {product.Price}/.</p>
-                <p className="text-white">Location: {product.Location}</p>
-                <p className="text-white">Type: {product.Type}</p>
+              <p className="text-white">Company: {product.Company}</p>
+              <p className="text-white">Type: {product.Type}</p>
+              <p className="text-white">Sell Price: {product.Type}</p>
+              {/* Well remove that at the ed */}
+              <p className="text-white">...: {product.Type}</p>   
+             
+               
+               
               </div>
               <div>
                 <button className="text-blue-500 hover:text-blue-700 m-2 mb-14" onClick={() => handleEditClick(index)}>

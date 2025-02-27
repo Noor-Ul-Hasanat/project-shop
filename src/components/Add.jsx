@@ -34,13 +34,12 @@ export default function Add() {
   ProductPrice.current.value=""
   ProductType.current.value=""
   ProductImage.current.value = null
- 
- 
-   
-  }
+ }
+
+
   return (
-    <div className='w-full'>
-   <form className="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-md">
+    <div className='w-full pt-6 bg-gray-600 min-h-screen justify-center flex items-center'>
+   <form className=" w-[50%]  bg-gray-800 p-8 rounded-lg shadow-md h-fit">
   <div className="mb-4">
     <input ref={ProductName} type="text" className="w-full px-3 py-2 border rounded-md" id='1'  placeholder="Product Name" required />
   </div>

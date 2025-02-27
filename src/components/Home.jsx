@@ -4,12 +4,14 @@ import ceoImage from '../Pictures/ceo-picture.jpg'; // Replace with actual CEO i
 
 export default function Home() {
   return (
-    <div className="relative w-full h-screen bg-gray-800 text-white">
+    <div className=" w-full min-h-screen bg-gray-800 text-white ">
       {/* Background Overlay */}
-      <div className="absolute inset-0 bg-shop-pic opacity-30"></div>
+      {/* <div className="absolute inset-0 bg-shop-pic opacity-30 w-full min-h-screen">
+        
+      </div> */}
 
       {/* 35 Years Image at Top-Left */}
-      <div className="absolute top-4 left-4">
+      <div className="hidden md:flex absolute top-4 left-[17%] ">
         <img
           src={image}
           alt="Celebrating 35 Years of Excellence"
@@ -20,7 +22,7 @@ export default function Home() {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full">
         {/* CEO Image */}
-        <div className="mb-6">
+        <div className="pb-6 pt-3">
           <img
             src={ceoImage}
             alt="CEO"
@@ -29,9 +31,9 @@ export default function Home() {
         </div>
 
         {/* Shop Owner's Message */}
-        <div className="max-w-3xl bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700 text-center">
+        <div className="max-w-3xl bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700 text-center h-full mb-3 mx-2">
           <h2 className="text-2xl font-bold mb-4">A Message from the Owner</h2>
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-gray-300 text-lg leading-relaxed ">
             "For 35 years, we have been dedicated to serving our customers with trust, excellence, and an unwavering
              commitment to quality. This milestone is not just a celebration of our journey but also a heartfelt tribute
               to the vision of my father, Qaiser Khan, whose determination laid the foundation of this business.<br/>
