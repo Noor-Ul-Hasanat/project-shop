@@ -3,14 +3,15 @@ import React from 'react';
 import Add from './Add';
 import Update from './Update';
 import Find from './Find';
-import Dues from './Dues';
+// import Dues from './Dues';
 // import Home from './Home';
-import Navbar from './Navbar';
-import AvlbleProdts from './AvlbleProdts';
+import {Navbar} from './Navbar';
+import {AvlbleProdts} from './AvlbleProdts';
 import { Dashboard } from './Dashboard';
 import { Customers } from './Customers';
 import { View } from './View';
 import { CashParchase } from './CashParchase';
+import { Invoice } from './Invoice';
 const router = createHashRouter([
 
   {
@@ -35,7 +36,7 @@ const router = createHashRouter([
       },
       {
         path: "/dues",
-        element:<Dues/>
+        element:<Invoice/>
       },
       {
         path: "/products",

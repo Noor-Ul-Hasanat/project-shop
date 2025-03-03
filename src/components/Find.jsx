@@ -4,7 +4,7 @@ import { MyActions } from '../store/Mystore';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
 export default function AvlbleProdts() {
-  console.log('i ma find ')
+ 
   const products = useSelector((state) => state.Available.products);
   const filteredProducts = useSelector((state) => state.Available.filteredProducts);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ export default function AvlbleProdts() {
     Image: '',
   });
     const [editingIndex, setEditingIndex] = useState(null);  // for storing the specific index on which edit is clicked
-  const handleEditClick = (index) => {
+    const handleEditClick = (index) => {
     setEditingIndex(index);                   // this step setIndex state that exactly on which edit cardthe user clicked
     const product = products[index];          // this retrive means (nakalna) a new product from products array to update that
     setFormValues({                           // this step setFormvalues state to the enterend vales in the input
@@ -80,7 +80,7 @@ export default function AvlbleProdts() {
             className="w-full md:w-[48%] lg:w-[45%] bg-gray-900 shadow-2xl rounded-lg overflow-hidden"
           >
             <div className="flex items-center p-4 border-b border-gray-200">
-              <div className="w-20 h-20 flex-shrink-0 border border-gray-300 rounded-md overflow-hidden">
+              <div className="w-16 h-16 flex-shrink-0 border border-gray-300 rounded-md overflow-hidden">
                 <img
                   src={product.Image || 'https://via.placeholder.com/100'}
                   alt={product.Name}
@@ -88,8 +88,7 @@ export default function AvlbleProdts() {
                 />
               </div>
               <div className="ml-4 flex-1">
-                <p className="text-white">Name: {product.Name}</p>
-                
+                <p className="text-white">Name: {product.Name}</p>               
                 <p className="text-white">Quantity: {product.Quantity}</p>
                 <p className="text-white">Cost Price: {product.Price}/.</p>
                 <p className="text-white">Location: {product.Location}</p>
@@ -99,7 +98,7 @@ export default function AvlbleProdts() {
               <p className="text-white">Type: {product.Type}</p>
               <p className="text-white">Sell Price: {product.Type}</p>
               {/* Well remove that at the ed */}
-              <p className="text-white">...: {product.Type}</p>   
+                
              
                
                

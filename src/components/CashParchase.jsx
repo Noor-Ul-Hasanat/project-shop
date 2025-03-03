@@ -1,9 +1,13 @@
-import React,{useState,useRef} from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {  FaPrint ,FaPlus, FaMinus } from 'react-icons/fa';
+import { FaPrint ,FaPlus, FaMinus } from 'react-icons/fa';
 import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
+import { useDispatch,useSelector } from 'react-redux';
+import {cashActions } from '../store/Mystore';
+import { NavLink } from 'react-router-dom';
 
 
 // style for Mui Model for add New Customer
@@ -22,10 +26,19 @@ const style = {
     overflowY: 'auto',
 };
 export const CashParchase = () => {
+  // Taking ref from input and equal it to state store
+ const nameRef =useRef();
+ const quantityRef =useRef();
+ const priceRef =useRef();
+ const recievedRef =useRef();
+ const customerRef =useRef();
+ const totalRef =useRef();
+
+
 
   const [customersCash, setCustomersCash] = useState([
-    { id: '1', Name: 'hasanat', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
-    { id: '1', Name: 'Uneeb', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
+    { id: `c${Date.now()}1`, Name: 'hasanat', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
+    { id: `c${Date.now()}2`, Name: 'Uneeb', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
   ]);
 
   const [openNewCustomer, setOpenNewCustomer] = useState(false);
@@ -38,10 +51,10 @@ const [totalAmount, setTotalAmount] = useState(0);
 const [EachtotalAmount, setEahtotalAmount] = useState(0);
 const [received, setReceived] = useState(0);
 const [grandTotal, setGrandTotal] = useState(0);
-
+  
 
 const addItem = () => {
-  const newItem = { name: '', price: 0, quantity: 0 };
+  const newItem = {id: `c${Date.now()}`, name: '', price: 0, quantity: 0 };
   setItems([...items, newItem]);
 };
 
@@ -67,28 +80,55 @@ const updateTotals = (items) => {
   setTotalAmount(totalAmount);
   setEahtotalAmount(EachtotalAmount)
 };
-          // Handel submit function
+
+
+
+   const dispatch = useDispatch();
+
+        // Handel submit function
    const submitbutton = () =>{
     
     const GrandTotal = totalAmount - received;
     setGrandTotal(GrandTotal);
-    
-   }       
+ 
+    const purchaseData = {
+      customerName: customerRef.current.value,
+      list: items, // ✅ Send the items array
+      totalAmount: totalAmount,
+      receivedAmount: received,
+      remainingAmount: grandTotal,
+    };
+    dispatch(cashActions.Addlist(purchaseData)); // ✅ Store in Redux
+   } 
+  
+     
 //   End of model functionality
+
+// Store functionallity
+// const dispatch =useDispatch();
+// const purchaseData = {
+//   items,
+//   totalItems,
+//   totalAmount,
+//   received,
+//   remainingAmount ,
+// };
+// dispatch(cashActions.AddCashItems(purchaseData));
+
+
 
 
 
 
 // print function 
-const printRef = useRef();
+    const contentRef = useRef(null);
+    const reactToPrintFn = useReactToPrint({ contentRef });
 
-const handlePrint = useReactToPrint({
-  content: () => printRef.current,
-  documentTitle: "Invoice",
-  onBeforePrint: () => console.log("Printing started..."),
-  onAfterPrint: () => console.log("Printing completed!"),
-});
-
+    const ITEMS = useSelector(state => state.cash.list);
+const cancle =()=>{
+  
+  alert(ITEMS);
+}
 
 
 
@@ -99,6 +139,7 @@ const handlePrint = useReactToPrint({
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold text-white">Cash Parchase</h1>
+          
           <div className="flex space-x-2">   
             {/* Add Customer Button */}
             <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700" onClick={handleOpencustomerModel}>
@@ -123,7 +164,7 @@ const handlePrint = useReactToPrint({
             </thead>
             <tbody>
               {customersCash.map((customer, index) => (
-                <tr className="border-b hover:bg-gray-50 odd:bg-gray-200 even:bg-gray-300" key={customer.id}>
+                <tr className="border-b hover:bg-gray-50 odd:bg-gray-200 even:bg-gray-300" key={customer.id || index}>
                   <td className="py-3 px-4">{customer.Name}</td>
                   <td className="py-3 px-4">{customer.Place}</td>
                   <td className="py-3 px-4">{customer.Phone}</td>
@@ -138,35 +179,41 @@ const handlePrint = useReactToPrint({
         
         </div>
       </div>
-      <div ref={printRef} className="print-container"> 
+      <div className="print-container"> 
 
       <Modal open={openNewCustomer} onClose={handleClosecustomerModel} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={style}>
          
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 } } component="div">
             
      <div className="p-4"> 
-      <div ref={printRef}>              
-      <h1 className="text-xl font-bold mb-4">Cash Purchase</h1>
-      <div className='flex justify-between'>
-        <input type='text' placeholder='Customer Name' className='p-2 border border-gray-300 rounded mb-3 w-1/2'/> 
-      <button
+     <h1 className="text-xl font-bold mb-4">Cash Purchase</h1>
+ 
+     <button
           onClick={addItem}
-          className="p-2 bg-blue-500 text-white rounded mb-2"
+          className="p-2 bg-blue-500 text-white rounded mb-2 flex justify-self-end"
         >
-          + New Purchase
+          + Add item
         </button>
+     <div ref={contentRef} className='pl-2'>               
+     
+      <div className='flex gap-x-2'>
+        <h1 className='font-semibold text-xl'>Customer Name: </h1>
+        <input ref={customerRef} type='text' placeholder='Customer Name' className='p-2 border border-gray-300 rounded mb-3 w-1/2'/> 
+     
         </div>
       <div className="space-y-4 overflow-auto">
         {items.map((item, index) => (
           <div key={index} className="flex space-x-4 items-center">
             <input
+              ref={nameRef}
               type="text"
               placeholder="Item Name"
               onChange={(e) => updateItem(index, 'name', e.target.value)}
               className="p-2 border border-gray-300 rounded"
             />
             <input
+               ref={priceRef}
                type="number"
               placeholder="Item Price"
  
@@ -174,6 +221,7 @@ const handlePrint = useReactToPrint({
               className="p-2  border border-gray-300 rounded"
             />
             <input
+              ref={quantityRef}
               type="number"
               placeholder="Number of Items "
              
@@ -181,6 +229,7 @@ const handlePrint = useReactToPrint({
               className="p-2 border border-gray-300 rounded"
             />
             <input
+              ref={totalRef}
               type="number"
               placeholder="Total "
               readOnly
@@ -211,22 +260,24 @@ const handlePrint = useReactToPrint({
         <div>
           Received: 
           <input
+            ref={recievedRef}
             type="number"
-            value={received}
+      
             onChange={(e) => setReceived(parseFloat(e.target.value))}
             className="p-2 border border-gray-300 rounded ml-2"
           />
         </div>
         <div className='pt-2'>
-        <hi className= 'text-red-500 font-semibold text-base' >Remaning Amount: {grandTotal}</hi>
+        <h1 className= 'text-red-500 font-semibold text-base' >Remaning Amount: {grandTotal}</h1>
         </div>
       </div>
       </div>
       <div>
       <div className="mt-4 flex space-x-4">
         <button className="p-2 bg-green-500 text-white rounded" onClick={submitbutton}>Submit</button>
-        <button className="p-2 bg-gray-500 text-white rounded">Cancel</button>
-        <button className="p-2 bg-blue-500 text-white rounded" type= 'submit'  onClick={handlePrint}><FaPrint/></button>
+        <button className="p-2 bg-gray-500 text-white rounded" onClick={cancle} >Cancel</button>
+        <button className="p-2 bg-blue-500 text-white rounded" type= 'submit'  onClick={() => reactToPrintFn()}><FaPrint/></button>
+         <NavLink to='/dues'><h1>invice</h1></NavLink>
       </div> 
       </div>
     </div>
@@ -234,17 +285,10 @@ const handlePrint = useReactToPrint({
           </Typography>
         </Box>
       </Modal>
+
+      
       </div>
-      <style>{`
-  @media print {
-    body * {
-      display: none;
-    }
-    .print-container, .print-container * {
-      display: block;
-    }
-  }
-`}</style>
+     
 
     </>
   )

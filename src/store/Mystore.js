@@ -6,7 +6,7 @@ const customerSlice = createSlice({
   initialState: {
     customers: [
       { id: '1', Name: 'hasanat', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
-      { id: '1', Name: 'Uneeb', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
+      { id: '2', Name: 'Uneeb', Place: '123 Main St', Phone: '555-1234', Depit: '0', Cradit: '0', Date: '2023-10-01', Time: '12:00 PM' },
     ]
   },
   reducers: {
@@ -23,7 +23,27 @@ const customerSlice = createSlice({
   }
 });
 
-const ViewSlice = createSlice({
+const CashPriceslice = createSlice({
+  name : 'cash',
+  initialState : {
+    list:[],
+    customerName: '',
+    calculation:[]
+  },
+  reducers: {
+    AddCustomerName: (state, action) => {
+      state.customerName = action.payload; 
+    },
+    Addlist: (state,action) =>{
+      state.list = action.payload;
+    },
+    AddCalculator:(state,action) => {
+      state.calculation.push(action.payload);
+    }
+  }
+})
+
+const Viewslice = createSlice({
   name: 'view',
   initialState: {
     items: [], // Initialize as an empty array
@@ -41,10 +61,16 @@ const ViewSlice = createSlice({
   },
 });
 
+
 const Availabilityslice = createSlice({
     name: 'Available',
     initialState: {
-      products: [], // Original products
+     // we have remove all the objects in arrey the 2 object or just for showing that will appear like that and just [] will remain
+      products: [{ Name: 'axel', Quantity: '10', Type: 'Fiat', Company: 'ATS', Price: '5000', Location: 'West', Image: '',
+      },
+      { Name: 'LUBRICANT', Quantity: '10', Type: '.7', Company: 'Total', Price: '5000', Location: 'Gudam NO 3', Image: '',
+      },
+    ], 
       filteredProducts: [], // Filtered products based on search
     },
     reducers: {    
@@ -71,9 +97,11 @@ export const store = configureStore({
   reducer:
           {Available:Availabilityslice.reducer,
            customers: customerSlice.reducer,  
-           view: ViewSlice.reducer,
+           view: Viewslice.reducer,
+           cash: CashPriceslice.reducer,
        }}) 
 
 export const MyActions = Availabilityslice.actions;
 export const customerActions = customerSlice.actions;
-export const viewActions= ViewSlice.actions;
+export const viewActions= Viewslice.actions;
+export const cashActions = CashPriceslice.actions;

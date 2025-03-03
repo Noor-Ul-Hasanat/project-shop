@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { NavLink, Outlet } from 'react-router-dom';
-export default function Navbar() {
+export  const Navbar=()=> {
   let classactive = 'text-blue-800';
   return (
     <div className='flex w-full min-h-screen '>
