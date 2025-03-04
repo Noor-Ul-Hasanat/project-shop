@@ -27,18 +27,18 @@ const CashPriceslice = createSlice({
   name : 'cash',
   initialState : {
     list:[],
-    customerName: '',
+    customerName:'Unknown Customer',
     calculation:[]
   },
   reducers: {
     AddCustomerName: (state, action) => {
       state.customerName = action.payload; 
     },
-    Addlist: (state,action) =>{
-      state.list = action.payload;
+    Addlist: (state, action) => {
+      state.list.push(action.payload); // Append new data instead of replacing
     },
-    AddCalculator:(state,action) => {
-      state.calculation.push(action.payload);
+    AddCalculator: (state, action) => {
+      state.calculation = action.payload;
     }
   }
 })
