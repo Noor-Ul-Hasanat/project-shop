@@ -11,16 +11,15 @@ import { store } from './store/Mystore';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
-  domain="dev-5vjgbn47jw4shym7.us.auth0.com"
-  clientId="DTowuiA5hApJvDPD95gIn4mJlW5Ws1IL"
-  authorizationParams={{
-    redirect_uri: `${window.location.origin}/#/callback`,
-  }}
->
-  <Provider store={store}>
-    <App />
-  </Provider>
-</Auth0Provider>
+    domain="dev-5vjgbn47jw4shym7.us.auth0.com"
+    clientId="DTowuiA5hApJvDPD95gIn4mJlW5Ws1IL"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
+
+<Provider store={store}> <App /></Provider>
+</Auth0Provider>,
 );
 
 
