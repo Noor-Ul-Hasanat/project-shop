@@ -127,10 +127,11 @@ export const Dashboard = () => {
     
   return (
     <>
-    <div className="bg-gray-600 p-6">
-
+    <div className="bg-gray-600 p-6 min-h-screen">
+    <div className=' text-xl font-semibold text-white'>
+    <h1>Dashboard</h1></div>
 {/* <!-- Dashboard Container --> */}
-<div className="w-full">
+<div className="w-full md:pt-8 pt-4">
     
     {/* <!-- Top Stats Section --> */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -166,7 +167,7 @@ export const Dashboard = () => {
 
     {/* <!-- Task Progress --> */}
     <div className='md:flex w-full md:gap-x-2'>
-    <div className="bg-white p-6 mt-6 rounded-xl shadow-lg w-[30%] h-fit">
+    <div className="bg-white p-6 mt-6 rounded-xl shadow-lg md:w-[30%] w-full h-fit">
         <h1 className="text-black font-medium text-lg">Task Progress</h1>
         <div className="w-full bg-gray-200 h-3 rounded-full mt-2">
             <div className="bg-blue-500 h-3 rounded-full w-[75%]" ></div>
@@ -175,7 +176,7 @@ export const Dashboard = () => {
     </div>
 
     {/* <!-- Sales Chart Placeholder --> */}
-    <div className="bg-white p-6 mt-6 rounded-xl shadow-lg w-[70%]">
+    <div className="bg-white p-6 mt-6 rounded-xl shadow-lg w-full md:w-[70%]">
         <div className="flex justify-between items-center">
             <h3 className="text-gray-500">Sales</h3>
             <button className="px-4 py-1 bg-blue-500 text-white rounded-lg text-sm">Sync</button>

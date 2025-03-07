@@ -61,19 +61,22 @@ export default function AvlbleProdts() {
 
   return (
     <div className="w-full pt-5 bg-gray-600 min-h-screen">
+     <div className='md:pl-6 pl-3 text-xl font-semibold'>
+       <h1 className='text-white '>Your Inventry</h1>
+       </div>
       {/* Search Input */}
-      <div className="max-w-lg mx-auto py-5">
+      <div className="max-w-lg mx-auto py-5 px-2">
         <input
           type="text"
           value={searchQuery}
           onChange={handleSearch}
           placeholder="Search products by name..."
-          className="w-full px-3 py-2 border rounded-md"
+          className="w-full px-3 py-2 border rounded-md "
         />
       </div>
       
       {/* Products */}
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex flex-wrap gap-3 justify-center px-2 md:px-0">
         {(searchQuery ? filteredProducts : products).map((product, index) => (
           <div
             key={index}
@@ -118,7 +121,7 @@ export default function AvlbleProdts() {
 
       {editingIndex !== null && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white shadow-2xl p-6 rounded-lg w-1/3">
+          <div className="bg-white shadow-2xl p-6 rounded-lg md:w-1/3 w-[80%]">
             <h2 className="text-2xl font-bold mb-4 text-red-600 text-center">Edit Product</h2>
             <form onSubmit={handleUpdate} className="space-y-4">
               {['Name', 'Quantity', 'Type', 'Company', 'Price', 'Location', 'Image'].map((field) => (

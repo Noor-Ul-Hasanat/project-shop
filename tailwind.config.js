@@ -6,7 +6,9 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: { 'shop-pic': "url('/src/Pictures/Shop-pic.jpeg')", },
+      backgroundImage: { 'man-pic': "url('/src/Pictures/image.jpg')", },
+
+      
     }
   },
   plugins: [],

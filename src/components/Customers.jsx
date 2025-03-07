@@ -13,12 +13,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  width: '50%',
   bgcolor: 'background.paper',
   border: '2px solid #606072',
   borderRadius: '16px',
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 
 // Refs for name adress and phone during making new cusotmer 
@@ -102,9 +102,9 @@ export const Customers = () => {
     <>
       <div className="p-6 bg-gray-600 min-h-screen ">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold text-white">Customers</h1>
-          <div className="flex space-x-2">
+        <div className="grid md:flex items-center justify-between mb-4">
+          <h1 className="text-xl font-semibold text-white">Customers</h1>
+          <div className="flex  space-x-2 mt-2 md:mt-0">
             {/* Import Button */}
             <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300">
               <i className="fas fa-file-import mr-2"></i>
@@ -172,25 +172,25 @@ export const Customers = () => {
             Customer Form
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <div>
-              <form typeof="submit" className="">
-                <div className="grid">
+            <div className='w-full '>
+              <form typeof="submit">
+                <div className="grid w-full">
                   <label htmlFor="Name" className="text-base">
                     Name*
                   </label>
-                  <input type="text" placeholder="Name" className="bg-gray-100 border border-black rounded-[10px] p-1" ref={nameRef}></input>
+                  <input type="text" placeholder="Name" className="bg-gray-100 border border-black rounded-[10px] p-1 w-full" ref={nameRef}></input>
                 </div>
                 <div className="grid mt-4">
                   <label htmlFor="Name" className="text-base">
                     Adress*
                   </label>
-                  <input type="text" placeholder="Adress" className="bg-gray-100 border border-black rounded-[10px] p-1" ref={adressRef}></input>
+                  <input type="text" placeholder="Adress" className="bg-gray-100 border border-black rounded-[10px] p-1 w-full" ref={adressRef}></input>
                 </div>
                 <div className="grid mt-4">
                   <label htmlFor="Name" className="text-base">
                     Phone*
                   </label>
-                  <input type="text" placeholder="Phone" className="bg-gray-100 border border-black rounded-[10px] p-1" ref={phoneRef}></input>
+                  <input type="text" placeholder="Phone" className="bg-gray-100 border border-black rounded-[10px] p-1 w-full" ref={phoneRef}></input>
                 </div>
                 <div className="mt-5 flex justify-between">
                   <button onClick={handelsubmitNewCustomer} className="bg-blue-500 rounded-xl text-white px-3 py-1">
@@ -213,8 +213,8 @@ export const Customers = () => {
             Edit Customer Form
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <div>
-              <form typeof="submit" className="">
+            <div className='md:w-[70%] w-full md:ml-[10%]'>
+              <form typeof="submit" >
                 <div className="grid">
                   <label htmlFor="Name" className="text-base">
                     Name*
@@ -222,7 +222,7 @@ export const Customers = () => {
                   <input
                     type="text"
                     placeholder="Name"
-                    className="bg-gray-100 border border-black rounded-[10px] p-1"
+                    className="bg-gray-100 border border-black rounded-[10px] p-1 w-full"
                     ref={nameRef}
                     defaultValue={editIndex !== null ? customers[editIndex].Name : ''}
                   ></input>
@@ -234,7 +234,7 @@ export const Customers = () => {
                   <input
                     type="text"
                     placeholder="Adress"
-                    className="bg-gray-100 border border-black rounded-[10px] p-1"
+                    className="bg-gray-100 border border-black rounded-[10px] p-1 w-full"
                     ref={adressRef}
                     defaultValue={editIndex !== null ? customers[editIndex].Place : ''}
                   ></input>
@@ -246,12 +246,12 @@ export const Customers = () => {
                   <input
                     type="text"
                     placeholder="Phone"
-                    className="bg-gray-100 border border-black rounded-[10px] p-1"
+                    className="bg-gray-100 border border-black rounded-[10px] p-1 w-full"
                     ref={phoneRef}
                     defaultValue={editIndex !== null ? customers[editIndex].Phone : ''}
                   ></input>
                 </div>
-                <div className="mt-5 flex justify-between">
+                <div className="mt-5 flex justify-between gap-x-2">
                   <button onClick={handleUpdateCustomer} className="bg-blue-500 rounded-xl text-white px-3 py-1">
                     Update
                   </button>

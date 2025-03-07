@@ -4,10 +4,12 @@
   "private": true,
   "homepage": "https://noor-ul-hasanat.github.io/project-shop/",
   "dependencies": {
+    "@auth0/auth0-react": "^2.3.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.5",
-    "@mui/material": "^6.4.5",
+    "@mui/material": "^6.4.7",
+    "@mui/styled-engine-sc": "^6.4.6",
     "@reduxjs/toolkit": "^2.5.0",
     "apexcharts": "^4.5.0",
     "cra-template": "1.2.0",
@@ -18,9 +20,10 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
-    "react-to-print": "^3.0.5"
+    "react-to-print": "^3.0.5",
+    "styled-components": "^6.1.15"
   },
-   "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",

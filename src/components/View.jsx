@@ -85,7 +85,7 @@ export const View = () => {
     return (
         <>
             <div className='bg-gray-600 p-5 w-full min-h-screen'>
-
+    
                 <div ref={printRef} className="print-container">
                     <div ref={printRef} className="print-container  bg-white shadow-md rounded-lg p-5 mb-5">
                         <div className="flex justify-between items-start">

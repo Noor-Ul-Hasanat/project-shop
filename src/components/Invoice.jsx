@@ -3,7 +3,10 @@ import React from 'react';
 import { FaPrint } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { useReactToPrint } from "react-to-print";
+import { useAuth0 } from "@auth0/auth0-react";
+
 export const Invoice = () => {
+  const { user } = useAuth0();
   const ghakname = useSelector((state) => state.cash.customerName);
   const Calculation = useSelector((state) => state.cash.calculation);
   const purchaseData = useSelector((state) => state.cash.list) || [];
@@ -72,6 +75,7 @@ const items = latestPurchase.items || [];
         </div>
 
         {/* Summary */}
+        <div>
         <div className="mt-4 border p-2 text-left">
          
           <p>
@@ -86,6 +90,11 @@ const items = latestPurchase.items || [];
           <p>
             Remaining: <span className="font-bold">{Calculation.remainingAmount}</span>
           </p>
+        </div>
+        <div>
+       <h1 className='text-right'>This Invoiceis made by {user.name}</h1>
+       
+          </div>
         </div>
       </div>
       <div className='flex justify-center items-center mt-2' onClick={() => reactToPrintFn()}>

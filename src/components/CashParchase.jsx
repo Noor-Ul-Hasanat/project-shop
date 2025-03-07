@@ -115,7 +115,7 @@ export const CashParchase = () => {
       <div className="p-6 bg-gray-600 min-h-screen ">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold text-white">Cash Parchase</h1>
+          <h1 className="text-xl font-semibold text-white">Cash Parchase</h1>
 
           <div className="flex space-x-2">
             {/* Add Customer Button */}
@@ -163,20 +163,19 @@ export const CashParchase = () => {
 
             <Typography id="modal-modal-description" sx={{ mt: 2 }} component="div">
 
-              <div className="p-4">
+              <div className="">
                 <h1 className="text-xl font-bold mb-4">Cash Purchase</h1>
 
                 <button
                   onClick={addItem}
-                  className="p-2 bg-blue-500 text-white rounded mb-2 flex justify-self-end"
-                >
+                  className="p-2 bg-blue-500 text-white rounded mb-2 flex justify-self-start md:justify-self-end">
                   + Add item
                 </button>
                 <div className='pl-2'>
 
-                  <div className='flex gap-x-2'>
-                    <h1 className='font-semibold text-xl'>Customer Name: </h1>
-                    <input ref={customerRef} type='text' placeholder='Customer Name' className='p-2 border border-gray-300 rounded mb-3 w-1/2' required/>
+                  <div className='md:flex grid gap-x-2'>
+                    <label className='font-semibold text-xl'>Customer Name: </label>
+                    <input ref={customerRef} type='text' placeholder='Customer Name' className='p-2 border border-gray-300 rounded mb-3 md:w-[40%] w-[90%]' required/>
 
                   </div>
                   <div className="space-y-4 overflow-auto">

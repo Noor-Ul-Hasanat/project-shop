@@ -38,8 +38,12 @@ export default function Add() {
 
 
   return (
-    <div className='w-full pt-6 bg-gray-600 min-h-screen justify-center flex items-center'>
-   <form className=" w-[50%]  bg-gray-800 p-8 rounded-lg shadow-md h-fit">
+    <>
+    <div className='w-full pt-6 bg-gray-600 min-h-screen  '>
+      <div className='md:pl-6 pl-3 text-xl font-semibold text-white'>
+         <h1>Add Inventry</h1></div>
+     <div className='justify-center flex items-center md:pt-10 pt-2 px-2'>
+     <form className=" w-full md:w-[50%]  bg-gray-800 p-8 rounded-lg shadow-md h-fit">
   <div className="mb-4">
     <input ref={ProductName} type="text" className="w-full px-3 py-2 border rounded-md" id='1'  placeholder="Product Name" required />
   </div>
@@ -65,8 +69,11 @@ export default function Add() {
   <button type="submit"  onClick={handalsbmit} className="w-40  bg-green-400 text-black py-2 px-4 rounded-md hover:bg-green-600">Submit</button>
   </div>
 </form>
+     </div>
+  
 
 
     </div>
+    </>
   )
 }
