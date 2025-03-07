@@ -14,7 +14,8 @@ root.render(
   domain="dev-5vjgbn47jw4shym7.us.auth0.com"
   clientId="DTowuiA5hApJvDPD95gIn4mJlW5Ws1IL"
   authorizationParams={{
-    redirect_uri: `${window.location.origin}/#/callback`
+    redirect_uri: `${window.location.origin}/#/callback`,
+    cacheLocation: "localstorage",
   }}
 >
   <Provider store={store}>
