@@ -19,7 +19,7 @@ root.render(
   >
 
 <Provider store={store}> <App /></Provider>
-</Auth0Provider>,
+</Auth0Provider>
 );
 
 
