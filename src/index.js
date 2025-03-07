@@ -15,7 +15,6 @@ root.render(
   clientId="DTowuiA5hApJvDPD95gIn4mJlW5Ws1IL"
   authorizationParams={{
     redirect_uri: `${window.location.origin}/#/callback`,
-    cacheLocation: "localstorage",
   }}
 >
   <Provider store={store}>
